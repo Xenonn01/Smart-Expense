@@ -348,7 +348,7 @@ export default function App() {
           )}
 
           {/* Tabs */}
-          <div className="flex gap-3 mb-5">
+          <div className="flex gap-3 mb-5 py-8">
             <button
               onClick={() => setTab("list")}
               className={`px-3 py-1.5 rounded-md text-sm font-medium ${
@@ -423,65 +423,65 @@ export default function App() {
               </table>
             </div>
           ) : (
-            <div className="flex flex-wrap justify-between center gap-6 py-8">
-              {/* Pie Chart */}
-              <div className="bg-white shadow rounded-xl flex-1 max-w-[400px] min-w-[250px]">
-              <h3 className="font-semibold mb-4 text-center">
-                  Distribution of your expenses across categories
-                </h3>
-                {pieData.length > 0 ? (
-                  <PieChart width={350} height={300}>
-                    <Pie
-                      data={pieData}
-                      dataKey="value"
-                      nameKey="name"
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={100}
-                      label
-                    >
-                      {pieData.map((entry, i) => (
-                        <Cell
-                          key={i}
-                          fill={categoryColors[entry.name] || COLORS[i % COLORS.length]}
-                        />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                  </PieChart>
-                ) : (
-                  <div className="flex items-center justify-center h-[300px] text-gray-500">
-                    No data to display. Add expenses to see the chart.
-                  </div>
-                )}
-              </div>
+           <div className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-8 py-8">
+            {/* Pie Chart */}
+            <div className="flex-1 max-w-[400px] min-w-[250px]">
+             <h3 className="font-semibold mb-4 text-center">
+               Distribution of your expenses across categories
+             </h3>
+              {pieData.length > 0 ? (
+               <PieChart width={350} height={300}>
+                  <Pie
+                    data={pieData}
+                    dataKey="value"
+                    nameKey="name"
+                   cx="50%"
+                   cy="50%"
+                   outerRadius={100}
+                    label
+                 >
+                   {pieData.map((entry, i) => (
+                      <Cell
+                       key={i}
+                       fill={categoryColors[entry.name] || COLORS[i % COLORS.length]}
+                     />
+                   ))}
+                 </Pie>
+                 <Tooltip />
+                </PieChart>
+              ) : (
+               <div className="flex items-center justify-center h-[300px] text-gray-500">
+                  No data to display. Add expenses to see the chart.
+                </div>
+             )}
+           </div>
 
-              {/* Bar Chart */}
-              <div className="bg-white shadow rounded-xl flex-1 max-w-[400px] min-w-[250px]">
-              <h3 className="font-semibold mb-4 text-center">
-                  Your spending trends over time
-                </h3>
-                {barData.length > 0 ? (
-                  <BarChart
-                    width={350}
-                    height={300}
-                    data={barData}
-                    margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="amount" fill="#4f46e5" />
-                  </BarChart>
-                ) : (
-                  <div className="flex items-center justify-center h-[300px] text-gray-500">
-                    No data to display. Add expenses to see the chart.
-                  </div>
-                )}
-              </div>
+            {/* Bar Chart */}
+            <div className="flex-1 max-w-[400px] min-w-[250px]">
+             <h3 className="font-semibold mb-4 text-center">
+               Your spending trends over time
+              </h3>
+             {barData.length > 0 ? (
+               <BarChart
+                 width={350}
+                 height={300}
+                 data={barData}
+                 margin={{ top: 20, right: 20, left: 0, bottom: 20 }}
+               >
+                 <CartesianGrid strokeDasharray="3 3" />
+                 <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="amount" fill="#4f46e5" />
+                </BarChart>
+              ) : (
+               <div className="flex items-center justify-center h-[300px] text-gray-500">
+                  No data to display. Add expenses to see the chart.
+               </div>
+             )}
             </div>
+          </div>
           )}
         </div>
 

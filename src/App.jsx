@@ -423,10 +423,10 @@ export default function App() {
               </table>
             </div>
           ) : (
-            <div className="flex gap-8">
+            <div className="flex flex-wrap justify-between center gap-6 py-8">
               {/* Pie Chart */}
-              <div className="w-1/2">
-                <h3 className="font-semibold mb-4">
+              <div className="bg-white shadow rounded-xl flex-1 max-w-[400px] min-w-[250px]">
+              <h3 className="font-semibold mb-4 text-center">
                   Distribution of your expenses across categories
                 </h3>
                 {pieData.length > 0 ? (
@@ -457,8 +457,8 @@ export default function App() {
               </div>
 
               {/* Bar Chart */}
-              <div className="w-1/2">
-                <h3 className="font-semibold mb-4">
+              <div className="bg-white shadow rounded-xl flex-1 max-w-[400px] min-w-[250px]">
+              <h3 className="font-semibold mb-4 text-center">
                   Your spending trends over time
                 </h3>
                 {barData.length > 0 ? (

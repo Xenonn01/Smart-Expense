@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
-import trackerLogo from "./assets/logo-tracker.png"; // your logo
+import trackerLogo from "./assets/logo-tracker.png"; 
 import "./App.css";
 
 export default function Auth({ onLogin }) {

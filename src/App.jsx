@@ -424,7 +424,7 @@ export default function App() {
             </div>
           ) : (
             <div className="flex flex-wrap justify-between gap-10 py-8 ">
-            {/* Pie Chart */}
+         
             <div className="flex-1 max-w-[400px] min-w-[250px] -mx-5">
              <h3 className="font-semibold mb-4 text-center">
                Distribution of your expenses across categories

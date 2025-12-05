@@ -39,7 +39,7 @@ export default function Auth({ onLogin }) {
     <div className="min-h-screen w-full flex justify-center items-center bg-[rgba(245,245,245,0.5)]">
       <div className="bg-white p-10 rounded-2xl shadow-md w-full max-w-md text-center border border-gray-200">
 
-        {/* Logo */}
+     
         <img src={trackerLogo} alt="SmartExpense" className="w-16 mx-auto mb-2" />
 
         <h2 className="text-xl font-semibold text-gray-800 mb-1">SmartExpense</h2>
@@ -48,7 +48,7 @@ export default function Auth({ onLogin }) {
           Track your expenses and manage your finances
         </p>
 
-        {/* Toggle Buttons */}
+       
         <div className="flex bg-gray-200 rounded-full p-1 mb-6">
           <button
             onClick={() => setIsLogin(true)}
@@ -102,7 +102,7 @@ export default function Auth({ onLogin }) {
             />
           </div>
 
-          {/* Submit Button */}
+        
           <button
             type="submit"
             className="w-full bg-black text-white py-2 rounded-full mt-4 hover:bg-gray-800 transition"

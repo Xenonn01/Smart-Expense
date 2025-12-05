@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
 import "./App.css";
 import Auth from "./Auth";
-import trackerLogo from "./assets/logo-tracker.png"; // Updated logo
+import trackerLogo from "./assets/logo-tracker.png"; 
 import { Pencil, Trash2, LogOut } from "lucide-react";
 import { 
   PieChart,
@@ -66,7 +66,7 @@ export default function App() {
     }
 
     if (editingExpense) {
-      // Update existing expense
+      
       const { error } = await supabase
         .from("expenses")
         .update({
@@ -83,7 +83,7 @@ export default function App() {
       }
       setEditingExpense(null);
     } else {
-      // Create new expense
+      
       const { error } = await supabase.from("expenses").insert([
         {
           user_id: session.user.id,
@@ -129,11 +129,11 @@ export default function App() {
 
   if (!session) return <Auth onLogin={setSession} />;
 
-  // Calculate totals
+ 
   const totalAmount = expenses.reduce((sum, e) => sum + Number(e.amount || 0), 0);
   const avgAmount = expenses.length > 0 ? totalAmount / expenses.length : 0;
 
-  // Calculate This Month expenses
+
   const now = new Date();
   const currentMonth = now.getMonth();
   const currentYear = now.getFullYear();
@@ -146,7 +146,7 @@ export default function App() {
     0
   );
 
-  // Calculate category breakdown for pie chart
+
   const categoryTotals = {};
   expenses.forEach((exp) => {
     const category = exp.category || "Others";
@@ -156,7 +156,7 @@ export default function App() {
     .map(([name, value]) => ({ name, value }))
     .sort((a, b) => b.value - a.value);
 
-  // Calculate monthly spending for bar chart
+  
   const monthlyTotals = {};
   expenses.forEach((exp) => {
     const expDate = exp.date ? new Date(exp.date) : new Date(exp.created_at);
@@ -170,9 +170,9 @@ export default function App() {
       const dateB = new Date(b.month);
       return dateA - dateB;
     })
-    .slice(-6); // Show last 6 months
+    .slice(-6);
 
-  // Category breakdown with percentages
+
   const categoryBreakdown = Object.entries(categoryTotals)
     .map(([category, amount]) => ({
       category,
@@ -195,7 +195,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* Navbar */}
+    
       <header className="bg-white shadow-sm border-b border-gray-100 flex justify-between items-center px-6 py-3">
         <div className="flex items-center gap-2">
             <img src={trackerLogo} alt="SmartExpense" className="w-10 h-12" />
@@ -216,7 +216,7 @@ export default function App() {
       </header>
 
       <main className="max-w-6xl mx-auto p-6 space-y-8">
-        {/* Summary Cards */}
+    
         <div className="flex flex-wrap justify-between gap-10 py-8">
           <div className="bg-white shadow rounded-xl p-5 flex-1 min-w-[200px] py-8 px-4">
             <h3 className="text-gray-500 text-sm font-medium">Total Expenses</h3>
@@ -241,7 +241,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* Expense Tracker */}
+   
         <div className="bg-white shadow rounded-xl p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="font-semibold text-lg">Expense Tracker</h2>
@@ -257,7 +257,7 @@ export default function App() {
             </button>
           </div>
 
-          {/* Modal */}
+       
           {showModal && (
             <div className="fixed inset-0 flex justify-center items-center z-50">
               <div
@@ -347,7 +347,7 @@ export default function App() {
             </div>
           )}
 
-          {/* Tabs */}
+   
           <div className="flex gap-3 mb-5 py-8">
             <button
               onClick={() => setTab("list")}
@@ -371,7 +371,7 @@ export default function App() {
             </button>
           </div>
 
-          {/* Tab Content */}
+      
           {tab === "list" ? (
             <div className="overflow-x-auto">
               <table className="w-full border border-gray-200 text-sm">
@@ -456,7 +456,7 @@ export default function App() {
              )}
            </div>
 
-            {/* Bar Chart */}
+         
             <div className="flex-1 max-w-[400px] min-w-[250px] -mx-5">
              <h3 className="font-semibold mb-4 text-center">
                Your spending trends over time
@@ -485,7 +485,7 @@ export default function App() {
           )}
         </div>
 
-        {/* Category Breakdown */}
+ 
         <div className="bg-white shadow rounded-xl p-6">
           <div>
             <h3 className="font-semibold mb-2">Category Breakdown</h3>
